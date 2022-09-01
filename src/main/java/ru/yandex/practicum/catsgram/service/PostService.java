@@ -2,7 +2,7 @@ package ru.yandex.practicum.catsgram.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.yandex.practicum.catsgram.exeptions.UserNotFoundException;
+import ru.yandex.practicum.catsgram.exception.UserNotFoundException;
 import ru.yandex.practicum.catsgram.model.Post;
 import ru.yandex.practicum.catsgram.model.User;
 
@@ -26,8 +26,11 @@ public class PostService {
     public Post create(Post post) {
         User postAuthor = userService.findUserByEmail(post.getAuthor());
         if (postAuthor == null) {
-            throw new UserNotFoundException(String.format("Пользователь %s не найден", post.getAuthor()));
+            throw new UserNotFoundException(String.format(
+                    "Пользователь %s не найден",
+                    post.getAuthor()));
         }
+
         posts.add(post);
         return post;
     }

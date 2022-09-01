@@ -8,12 +8,6 @@ public class User {
     private String nickname;
     private LocalDate birthdate;
 
-/*    public User(String email, String nickname, LocalDate birthdate) {
-        this.email = email;
-        this.nickname = nickname;
-        this.birthdate = birthdate;
-    }*/
-
     public String getEmail() {
         return email;
     }
